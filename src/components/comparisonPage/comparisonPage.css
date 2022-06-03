@@ -1,0 +1,8 @@
+.comparisonPage {
+  height: calc(100% - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #161616;
+}
