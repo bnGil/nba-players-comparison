@@ -2,7 +2,37 @@
   height: calc(100% - 50px);
   display: flex;
   justify-content: center;
-  align-items: center;
   padding: 10px;
-  background-color: #161616;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-areas: "player1 chart player2";
+  width: 100%;
+}
+
+.player-left {
+  grid-area: player1;
+  display: flex;
+  justify-content: center;
+}
+.player-right {
+  grid-area: player2;
+  display: flex;
+  justify-content: center;
+}
+.chart {
+  grid-area: chart;
+  /* height: 100%; */
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-areas:
+      "player1 player2"
+      "chart chart";
+  }
 }

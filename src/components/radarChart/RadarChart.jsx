@@ -25,10 +25,17 @@ const data = {
   labels: ["Thing 1", "Thing 2", "Thing 3", "Thing 4", "Thing 5", "Thing 6"],
   datasets: [
     {
-      label: "# of Votes",
-      data: [2, 9, 3, 5, 2, 3],
+      label: "Lebron James",
+      data: [5, 9, 4, 5, 4, 3],
       backgroundColor: "rgba(255, 99, 132, 0.2)",
       borderColor: "rgba(255, 99, 132, 1)",
+      borderWidth: 1,
+    },
+    {
+      label: "Luka Doncic",
+      data: [8, 3, 3, 5, 7, 6],
+      backgroundColor: "rgba(54, 162, 235, 0.2)",
+      borderColor: "rgb(54, 162, 235)",
       borderWidth: 1,
     },
   ],
@@ -37,14 +44,22 @@ const data = {
 const options = {
   scale: {
     ticks: { beginAtZero: true },
+    min: 0,
+  },
+  scales: {
+    r: {
+      grid: {
+        color: "#3c3c3c",
+      },
+    },
   },
 };
 
 function RadarChart() {
   return (
-    <>
-      <Radar height={400} width={400} data={data} options={options} />
-    </>
+    <div className="chart-container">
+      <Radar data={data} options={options} />
+    </div>
   );
 }
 

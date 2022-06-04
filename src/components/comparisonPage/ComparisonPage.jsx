@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import "./comparisonPage.css";
-import PlayerPanel from "../playerPanel/PlayerPanel";
 import RadarChart from "../radarChart/RadarChart";
+import PlayerPanel from "../playerPanel/PlayerPanel";
 
 function ComparisonPage() {
   const [data, setData] = useState([]);
@@ -36,9 +36,15 @@ function ComparisonPage() {
   return (
     <div className="comparisonPage">
       <div className="grid">
-        {/* <PlayerPanel /> */}
-        <RadarChart />
-        {/* <PlayerPanel /> */}
+        <div className="player-left">
+          <PlayerPanel />
+        </div>
+        <div className="chart">
+          <RadarChart />
+        </div>
+        <div className="player-right">
+          <PlayerPanel />
+        </div>
       </div>
     </div>
   );
