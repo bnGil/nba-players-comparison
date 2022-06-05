@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
 import "./comparisonPage.css";
+import { comparisonContext } from "../../context/comparisonContext";
 import RadarChart from "../radarChart/RadarChart";
 import PlayerPanel from "../playerPanel/PlayerPanel";
 
 function ComparisonPage() {
-  const [data, setData] = useState([]);
+  const { setPlayers } = useContext(comparisonContext);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -16,7 +17,13 @@ function ComparisonPage() {
       try {
         setLoading(true);
         const { data } = await axios.get(url);
-        console.log(data);
+        const players = [];
+        data.forEach((player) => {
+          if (player.firstName && player.lastName && player.team) {
+            players.push(player);
+          }
+        });
+        setPlayers(players);
       } catch (err) {
         console.log(err);
       } finally {

@@ -5,8 +5,7 @@
 } */
 
 .player-img {
-  background: url(https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3032977.png)
-    no-repeat center center/contain;
+  background: no-repeat center center/contain;
   width: 200px;
   height: 150px;
   position: relative;

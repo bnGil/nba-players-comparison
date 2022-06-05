@@ -34,7 +34,7 @@ function Dropdown({ options, prompt, value, onChange, id, label }) {
 
   function selectOption(option) {
     setTerm("");
-    onChange(option);
+    // onChange(option);
     setOpen(false);
   }
 
@@ -49,7 +49,7 @@ function Dropdown({ options, prompt, value, onChange, id, label }) {
             value={displayValue()}
             onChange={(e) => {
               setTerm(e.target.value);
-              onChange(null);
+              // onChange(null);
             }}
             onClick={toggle}
             onTouchEnd={toggle}
