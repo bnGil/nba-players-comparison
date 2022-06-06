@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import "./playerPanel.css";
 import { comparisonContext } from "../../context/comparisonContext";
@@ -6,10 +6,10 @@ import PopUp from "../popUp/PopUp";
 import PlayersDropdown from "../playersDropdown/PlayersDropdown";
 import SeasonsDropdown from "../seasonsDropdown/SeasonsDropdown";
 
-function PlayerPanel() {
-  const [isSearching, setIsSearching] = useState(false);
-  const playerImgURL =
-    "https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3032977.png";
+function PlayerPanel({ side }) {
+  const [isPopupOpened, setIsPopupOpened] = useState(false);
+  const { playerRight, playerLeft } = useContext(comparisonContext);
+  const player = side === "right" ? playerRight : playerLeft;
 
   return (
     <>
@@ -17,12 +17,12 @@ function PlayerPanel() {
         <div
           className="player-img"
           style={{
-            backgroundImage: `url(${playerImgURL})`,
+            backgroundImage: `url(${player && player.img})`,
           }}
         >
           <i
             className="fa-solid fa-user-plus fa-2x"
-            onClick={() => setIsSearching((prev) => !prev)}
+            onClick={() => setIsPopupOpened((prev) => !prev)}
           ></i>
           <img
             className="team-img"
@@ -30,18 +30,20 @@ function PlayerPanel() {
             alt="team"
           />
         </div>
-        <h2 className="player-name">G. Antetokounmpo</h2>
-        <h3 className="player-season">2017-18</h3>
+        <h2 className="player-name">{player && player.fullName}</h2>
+        <h3 className="player-season">
+          {player && player.selectedSeason && player.selectedSeason.season}
+        </h3>
       </div>
 
-      {isSearching && (
+      {isPopupOpened && (
         <PopUp
           text="Choose a player and a season:"
-          noCallback={() => setIsSearching((prev) => !prev)}
+          yesCallback={() => setIsPopupOpened((prev) => !prev)}
         >
           <div style={{ width: "200px", height: "120px" }}>
-            <PlayersDropdown />
-            <SeasonsDropdown />
+            <PlayersDropdown side={side} />
+            {player && <SeasonsDropdown side={side} />}
           </div>
         </PopUp>
       )}

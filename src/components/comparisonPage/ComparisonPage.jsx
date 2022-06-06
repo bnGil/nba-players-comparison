@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
+import React, { useEffect, useContext } from "react";
 
 import "./comparisonPage.css";
 import { comparisonContext } from "../../context/comparisonContext";
@@ -39,13 +38,13 @@ function ComparisonPage() {
     <div className="comparisonPage">
       <div className="grid">
         <div className="player-left">
-          <PlayerPanel />
+          <PlayerPanel side="left" />
         </div>
         <div className="chart">
           <RadarChart />
         </div>
         <div className="player-right">
-          <PlayerPanel />
+          <PlayerPanel side="right" />
         </div>
       </div>
     </div>

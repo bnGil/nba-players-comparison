@@ -11,9 +11,6 @@ function PopUp({ text, children, yesCallback, noCallback }) {
           <button className="popup-btn" onClick={yesCallback}>
             Confirm
           </button>
-          <button className="popup-btn" onClick={noCallback}>
-            Cancel
-          </button>
         </div>
       </div>
     </div>

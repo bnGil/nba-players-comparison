@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./dropdown.css";
 
-function Dropdown({ options, prompt, value, onChange, id, label }) {
+function Dropdown({ options = [], prompt, value, onChange, id, label }) {
   const [open, setOpen] = useState(false);
   const [term, setTerm] = useState("");
   const ref = useRef(null);
@@ -34,8 +34,9 @@ function Dropdown({ options, prompt, value, onChange, id, label }) {
 
   function selectOption(option) {
     setTerm("");
-    // onChange(option);
+    onChange(option);
     setOpen(false);
+    console.log(option);
   }
 
   return (
@@ -49,7 +50,7 @@ function Dropdown({ options, prompt, value, onChange, id, label }) {
             value={displayValue()}
             onChange={(e) => {
               setTerm(e.target.value);
-              // onChange(null);
+              onChange(null);
             }}
             onClick={toggle}
             onTouchEnd={toggle}
