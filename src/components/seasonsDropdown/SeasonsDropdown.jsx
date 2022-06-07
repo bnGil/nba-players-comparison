@@ -4,6 +4,7 @@ import axios from "axios";
 import { comparisonContext } from "../../context/comparisonContext";
 import useFetchNetlify from "../../hooks/useFetchNetlify";
 import Dropdown from "../dropdown/Dropdown";
+import TEAMS_IMGS from "../../constants/teamsConvertion";
 
 function SeasonsDropdown({ side }) {
   const { players, playerRight, setPlayerRight, playerLeft, setPlayerLeft } =
@@ -12,13 +13,18 @@ function SeasonsDropdown({ side }) {
   const setPlayer = side === "right" ? setPlayerRight : setPlayerLeft;
 
   const [selectedSeason, setSelectedSeason] = useState(null);
+  const [seasons, setSeasons] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // const getTeamImg = (teamName) => {
-  //   const team = teams.find((team) => team.name === teamName);
-  //   return team.teamLogoUrl;
-  // };
+  const getTeamImg = (teamName) => {
+    for (const team in TEAMS_IMGS) {
+      if (TEAMS_IMGS[team].name === teamName) {
+        return TEAMS_IMGS[team].img;
+      }
+    }
+  };
 
   const getPlayerSeasonsArr = (data) => {
     const seasons = data.map((season) => {
@@ -26,7 +32,7 @@ function SeasonsDropdown({ side }) {
         id: season.id,
         season: season.season,
         team: season.team,
-        // teamImg:getTeamImg(TEAMS_CONVERTION[season.team])
+        teamImg: TEAMS_IMGS[season.team].img,
         pointsPerGame: season.pointsPerGame,
         blocksPerGame: season.blocksPerGame,
         assistsPerGame: season.assistsPerGame,
@@ -42,7 +48,7 @@ function SeasonsDropdown({ side }) {
     const careerAvgSeason = {
       id: 30000,
       season: "Career Avg",
-      // teamImg: getTeamImg(tempPlayer.team),
+      teamImg: getTeamImg(tempPlayer.team),
       pointsPerGame: tempPlayer.careerPoints,
       blocksPerGame: tempPlayer.careerBlocks,
       assistsPerGame: tempPlayer.careerAssists,
@@ -57,14 +63,14 @@ function SeasonsDropdown({ side }) {
 
   useEffect(() => {
     if (player && player.id) {
+      setLoading(true);
       const url = `/.netlify/functions/fetchData?endpoint=/playerseasons?playerId=${player.id}`;
       const fetchDataFromNetlify = async () => {
         try {
           setLoading(true);
           const { data } = await axios.get(url);
-          console.log(data);
           const seasons = getPlayerSeasonsArr(data);
-          setPlayer({ ...player, seasons, selectedSeason });
+          setSeasons(seasons);
         } catch (err) {
           setError(err.message);
         } finally {
@@ -73,16 +79,18 @@ function SeasonsDropdown({ side }) {
       };
       fetchDataFromNetlify();
     }
-  }, [selectedSeason]);
+  }, [player]);
 
-  // useEffect(() => {
-  //   setPlayer({ ...player, selectedSeason });
-  // }, [selectedSeason]);
+  useEffect(() => {
+    if (selectedSeason) {
+      setPlayer({ ...player, selectedSeason });
+    }
+  }, [selectedSeason]);
 
   return (
     <Dropdown
-      options={player.seasons}
-      prompt="Select season..."
+      options={seasons}
+      prompt={loading ? "Loading..." : "Select season..."}
       id="id"
       label="season"
       onChange={(season) => setSelectedSeason(season)}

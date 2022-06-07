@@ -50,7 +50,7 @@ function Dropdown({ options = [], prompt, value, onChange, id, label }) {
             value={displayValue()}
             onChange={(e) => {
               setTerm(e.target.value);
-              onChange(null);
+              onChange([]);
             }}
             onClick={toggle}
             onTouchEnd={toggle}

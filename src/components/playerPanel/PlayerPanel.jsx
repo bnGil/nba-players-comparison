@@ -11,6 +11,12 @@ function PlayerPanel({ side }) {
   const { playerRight, playerLeft } = useContext(comparisonContext);
   const player = side === "right" ? playerRight : playerLeft;
 
+  const shortenFullName = (fullName) => {
+    const arrOfStr = fullName.split(" ");
+    arrOfStr[0] = arrOfStr[0][0] + ".";
+    return arrOfStr.join(" ");
+  };
+
   return (
     <>
       <div className="player-container">
@@ -24,13 +30,19 @@ function PlayerPanel({ side }) {
             className="fa-solid fa-user-plus fa-2x"
             onClick={() => setIsPopupOpened((prev) => !prev)}
           ></i>
-          <img
-            className="team-img"
-            src="https://a.espncdn.com/i/teamlogos/nba/500/mil.png"
-            alt="team"
-          />
+          {player && player.selectedSeason && (
+            <img
+              className="team-img"
+              src={
+                player && player.selectedSeason && player.selectedSeason.teamImg
+              }
+              alt="team"
+            />
+          )}
         </div>
-        <h2 className="player-name">{player && player.fullName}</h2>
+        <h2 className="player-name">
+          {player && player.fullName && shortenFullName(player.fullName)}
+        </h2>
         <h3 className="player-season">
           {player && player.selectedSeason && player.selectedSeason.season}
         </h3>

@@ -4,10 +4,13 @@ import Dropdown from "../dropdown/Dropdown";
 import { comparisonContext } from "../../context/comparisonContext";
 
 function PlayersDropdown({ side }) {
-  const { players, setPlayerRight, setPlayerLeft } =
+  const { players, playerRight, setPlayerRight, playerLeft, setPlayerLeft } =
     useContext(comparisonContext);
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const player = side === "right" ? playerRight : playerLeft;
   const setPlayer = side === "right" ? setPlayerRight : setPlayerLeft;
+  const [selectedPlayer, setSelectedPlayer] = useState(
+    Object.keys(player).length > 0 ? player : null
+  );
 
   const fullNames = players.map((player) => {
     return {
@@ -18,8 +21,10 @@ function PlayersDropdown({ side }) {
   });
 
   useEffect(() => {
-    setPlayer(selectedPlayer);
-  }, [selectedPlayer]);
+    if (selectedPlayer) {
+      setPlayer(selectedPlayer);
+    }
+  }, [selectedPlayer, setPlayer]);
 
   return (
     <Dropdown

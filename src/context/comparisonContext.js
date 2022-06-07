@@ -4,8 +4,8 @@ export const comparisonContext = createContext();
 
 function ComparisonProvider({ children }) {
   const [players, setPlayers] = useState([]);
-  const [playerRight, setPlayerRight] = useState([]);
-  const [playerLeft, setPlayerLeft] = useState([]);
+  const [playerRight, setPlayerRight] = useState({});
+  const [playerLeft, setPlayerLeft] = useState({});
 
   return (
     <comparisonContext.Provider
