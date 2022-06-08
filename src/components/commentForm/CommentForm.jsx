@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./commentForm.css";
 
-function CommentForm() {
+function CommentForm({ onHandleClick }) {
   const [author, setAuthor] = useState("");
   const [text, setText] = useState("");
 
@@ -13,7 +13,7 @@ function CommentForm() {
         id="author"
         value={author}
         onChange={(e) => setAuthor(e.target.value)}
-        placeholder="Name"
+        placeholder="Name..."
       />
       <textarea
         name="text"
@@ -22,7 +22,17 @@ function CommentForm() {
         value={text}
         placeholder="Comment..."
       ></textarea>
-      <input type="submit" className="btn" value="Submit" />
+      <input
+        type="submit"
+        className="btn"
+        value="Submit"
+        onClick={(e) => {
+          e.preventDefault();
+          onHandleClick(author, text);
+          setAuthor("");
+          setText("");
+        }}
+      />
     </form>
   );
 }

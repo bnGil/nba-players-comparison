@@ -29,13 +29,18 @@
   box-shadow: 0 0 5px #ff4848;
 }
 
-.commentForm-container .btn {
+.btn {
   width: fit-content;
   padding: 5px 10px;
   border-radius: 0;
   background-color: #ff4848;
   color: #ffffff;
   cursor: pointer;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #cd2828;
 }
 
 @media (max-width: 768px) {

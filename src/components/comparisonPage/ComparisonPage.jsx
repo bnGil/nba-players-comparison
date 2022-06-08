@@ -5,6 +5,7 @@ import { comparisonContext } from "../../context/comparisonContext";
 import useFetchNetlify from "../../hooks/useFetchNetlify";
 import RadarChart from "../radarChart/RadarChart";
 import PlayerPanel from "../playerPanel/PlayerPanel";
+import Spinner from "../spinner/Spinner";
 
 function ComparisonPage() {
   const { setPlayers } = useContext(comparisonContext);
@@ -23,7 +24,7 @@ function ComparisonPage() {
   if (loading) {
     return (
       <div className="comparisonPage">
-        <h1>Loading...</h1>
+        <Spinner />
       </div>
     );
   }
