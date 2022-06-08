@@ -30,11 +30,20 @@
   justify-content: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .grid {
     grid-template-areas:
       "player1 player2"
       "chart chart";
-    grid-template-rows: 20% 80%;
+  }
+}
+@media (max-width: 768px) {
+  .grid {
+    grid-template-rows: 30% 70%;
+  }
+}
+@media (max-height: 400px) {
+  .grid {
+    grid-template-rows: 50% 50%;
   }
 }

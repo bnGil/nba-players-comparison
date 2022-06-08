@@ -1,8 +1,8 @@
-/* .player-container {
+.player-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-} */
+}
 
 .player-img {
   background: no-repeat center center/contain;
@@ -28,6 +28,16 @@
   position: absolute;
   top: 20px;
   right: 0;
+}
+
+.comments-link {
+  text-decoration: none;
+  color: #ff4848;
+  transition: 0.2s;
+}
+
+.comments-link:hover {
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {

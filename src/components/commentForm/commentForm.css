@@ -1,0 +1,45 @@
+.commentForm-container {
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.commentForm-container #author {
+  width: 220px;
+  padding: 5px;
+  border-radius: 0px;
+  border: 1px solid transparent;
+}
+
+.commentForm-container #text {
+  border-radius: 0px;
+  width: 400px;
+  height: 150px;
+  padding: 5px;
+  border: 1px solid transparent;
+  overflow-y: scroll;
+  resize: none;
+}
+
+.commentForm-container #text:focus,
+.commentForm-container #author:focus {
+  outline: none;
+  border: 1px solid #ff4848;
+  box-shadow: 0 0 5px #ff4848;
+}
+
+.commentForm-container .btn {
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 0;
+  background-color: #ff4848;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .commentForm-container #text {
+    width: 100%;
+  }
+}

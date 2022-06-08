@@ -1,0 +1,17 @@
+.commentsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+}
+.commentsPage > p {
+  color: #ff4848;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.commentsPage-h1 {
+  color: #ff4848;
+  margin-bottom: 1rem;
+}

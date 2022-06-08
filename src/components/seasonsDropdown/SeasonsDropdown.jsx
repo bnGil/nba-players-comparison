@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 import { comparisonContext } from "../../context/comparisonContext";
-import useFetchNetlify from "../../hooks/useFetchNetlify";
 import Dropdown from "../dropdown/Dropdown";
 import TEAMS_IMGS from "../../constants/teamsConvertion";
 
@@ -87,6 +86,9 @@ function SeasonsDropdown({ side }) {
     }
   }, [selectedSeason]);
 
+  if (error) {
+    return <p>{error}</p>;
+  }
   return (
     <Dropdown
       options={seasons}

@@ -5,6 +5,7 @@ import Header from "./components/header/Header";
 import Homepage from "./components/homepage/Homepage";
 import About from "./components/about/About";
 import ComparisonPage from "./components/comparisonPage/ComparisonPage";
+import CommentsPage from "./components/commentsPage/CommentsPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" component={Homepage} />
           <Route exact path="/about" component={About} />
           <Route exact path="/comparison" component={ComparisonPage} />
+          <Route exact path="/comments/:id" component={CommentsPage} />
         </Switch>
       </Router>
     </>

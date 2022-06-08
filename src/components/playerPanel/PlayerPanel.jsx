@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "./playerPanel.css";
 import { comparisonContext } from "../../context/comparisonContext";
@@ -46,6 +47,11 @@ function PlayerPanel({ side }) {
         <h3 className="player-season">
           {player && player.selectedSeason && player.selectedSeason.season}
         </h3>
+        {Object.keys(player).length > 0 && (
+          <Link className="comments-link" to={`/comments/${player.id}`}>
+            Public opinion <i className="fa-solid fa-comment"></i>
+          </Link>
+        )}
       </div>
 
       {isPopupOpened && (
