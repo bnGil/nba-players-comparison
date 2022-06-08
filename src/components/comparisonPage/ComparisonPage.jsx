@@ -18,7 +18,7 @@ function ComparisonPage() {
       }
     });
     setPlayers(existingPlayers);
-  }, [data]);
+  }, [data, setPlayers]);
 
   if (loading) {
     return (

@@ -23,7 +23,7 @@ const useFetchNetlify = (endPoint) => {
       };
       fetchDataFromNetlify();
     }
-  }, []);
+  }, [endPoint, url]);
   return { data, error, loading };
 };
 export default useFetchNetlify;

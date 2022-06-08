@@ -78,12 +78,14 @@ function SeasonsDropdown({ side }) {
       };
       fetchDataFromNetlify();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [player]);
 
   useEffect(() => {
     if (selectedSeason) {
       setPlayer({ ...player, selectedSeason });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSeason]);
 
   if (error) {

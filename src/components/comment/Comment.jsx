@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./comment.css";
 import userAvatar from "../../assets/images/anonymous-user.png";

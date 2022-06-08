@@ -1,19 +1,18 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 
 import "./commentsPage.css";
-import { comparisonContext } from "../../context/comparisonContext";
 import Comment from "../comment/Comment";
 import CommentForm from "../commentForm/CommentForm";
 
 function CommentsPage(props) {
-  const { players } = useContext(comparisonContext);
+  // const { players } = useContext(comparisonContext);
   const playerId = props.match.params.id;
   console.log(playerId);
 
-  const getPlayerName = (id) => {
-    const player = players.find((player) => player.id === id);
-    return `${player.firstName} ${player.lastName}`;
-  };
+  // const getPlayerName = (id) => {
+  //   const player = players.find((player) => player.id === id);
+  //   return `${player.firstName} ${player.lastName}`;
+  // };
 
   return (
     <div className="commentsPage">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./popUp.css";
 
 function PopUp({ text, children, yesCallback, noCallback }) {
