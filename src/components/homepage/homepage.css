@@ -29,3 +29,9 @@
 .btn.landing-btn {
   margin-top: 2rem;
 }
+
+@media (max-width: 768px) {
+  .landing-content {
+    width: 70%;
+  }
+}
