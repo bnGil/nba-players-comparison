@@ -9,12 +9,12 @@ import { db } from "../../services/firebase-config";
 import Spinner from "../spinner/Spinner";
 
 function CommentsPage(props) {
-  // const { players } = useContext(comparisonContext);
   const [playerComments, setPlayerComments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const playerId = props.match.params.id;
+  const playerName = props.match.params.name;
 
   const createComment = async (author, text) => {
     const newComment = {
@@ -28,11 +28,6 @@ function CommentsPage(props) {
     await updateDoc(playerDoc, newField);
     setPlayerComments([...playerComments, newComment]);
   };
-
-  // const getPlayerName = (id) => {
-  //   const player = players.find((player) => player.id === id);
-  //   return `${player.firstName} ${player.lastName}`;
-  // };
 
   const paintComments = () => {
     return playerComments.map(({ commentId, author, text, date }) => {
@@ -79,7 +74,7 @@ function CommentsPage(props) {
 
   return (
     <div className="commentsPage">
-      <h1 className="commentsPage-h1">Trae Young</h1>
+      <h1 className="commentsPage-h1">{playerName}</h1>
       {playerComments.length === 0 ? (
         <h2>Be the first to comment!</h2>
       ) : (

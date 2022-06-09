@@ -48,7 +48,10 @@ function PlayerPanel({ side }) {
           {player && player.selectedSeason && player.selectedSeason.season}
         </h3>
         {Object.keys(player).length > 0 && (
-          <Link className="comments-link" to={`/comments/${player.id}`}>
+          <Link
+            className="comments-link"
+            to={`/comments/${player.id}/${player.fullName}`}
+          >
             Public opinion <i className="fa-solid fa-comment"></i>
           </Link>
         )}

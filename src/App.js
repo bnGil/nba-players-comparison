@@ -15,7 +15,7 @@ function App() {
           <Route exact path="/" component={Homepage} />
           <Route exact path="/about" component={About} />
           <Route exact path="/comparison" component={ComparisonPage} />
-          <Route exact path="/comments/:id" component={CommentsPage} />
+          <Route exact path="/comments/:id/:name" component={CommentsPage} />
         </Switch>
       </Router>
     </>

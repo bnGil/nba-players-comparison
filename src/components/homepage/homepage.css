@@ -28,6 +28,8 @@
 
 .btn.landing-btn {
   margin-top: 2rem;
+  font-size: 2rem;
+  border-radius: 5px;
 }
 
 @media (max-width: 768px) {
