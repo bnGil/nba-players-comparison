@@ -26,20 +26,24 @@ function SeasonsDropdown({ side }) {
   };
 
   const getPlayerSeasonsArr = (data) => {
-    const seasons = data.map((season) => {
-      return {
-        id: season.id,
-        season: season.season,
-        team: season.team,
-        teamImg: TEAMS_IMGS[season.team].img,
-        pointsPerGame: season.pointsPerGame,
-        blocksPerGame: season.blocksPerGame,
-        assistsPerGame: season.assistsPerGame,
-        reboundsPerGame: season.reboundsPerGame,
-        turnoversPerGame: season.turnoversPerGame,
-        percentageThree: season.percentageThree,
-        percentageFieldGoal: season.percentageFieldGoal,
-      };
+    const seasons = [];
+    data.forEach((season) => {
+      if (season.team) {
+        const seasonObj = {
+          id: season.id,
+          season: season.season,
+          team: season.team,
+          teamImg: TEAMS_IMGS[season.team].img,
+          pointsPerGame: season.pointsPerGame,
+          blocksPerGame: season.blocksPerGame,
+          assistsPerGame: season.assistsPerGame,
+          reboundsPerGame: season.reboundsPerGame,
+          turnoversPerGame: season.turnoversPerGame,
+          percentageThree: season.percentageThree,
+          percentageFieldGoal: season.percentageFieldGoal,
+        };
+        seasons.push(seasonObj);
+      }
     });
     const tempPlayer = players.find(
       (currTempPlayer) => currTempPlayer.id === player.id
