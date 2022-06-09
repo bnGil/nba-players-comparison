@@ -36,7 +36,6 @@ function Dropdown({ options = [], prompt, value, onChange, id, label }) {
     setTerm("");
     onChange(option);
     setOpen(false);
-    console.log(option);
   }
 
   return (
