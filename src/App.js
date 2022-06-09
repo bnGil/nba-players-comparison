@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./components/header/Header";
-import Homepage from "./components/homepage/Homepage";
-import About from "./components/about/About";
-import ComparisonPage from "./components/comparisonPage/ComparisonPage";
-import CommentsPage from "./components/commentsPage/CommentsPage";
+import Homepage from "./pages/homepage/Homepage";
+import About from "./pages/about/About";
+import ComparisonPage from "./pages/comparisonPage/ComparisonPage";
+import CommentsPage from "./pages/commentsPage/CommentsPage";
 
 function App() {
   return (

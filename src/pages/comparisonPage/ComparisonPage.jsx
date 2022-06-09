@@ -3,9 +3,9 @@ import React, { useEffect, useContext } from "react";
 import "./comparisonPage.css";
 import { comparisonContext } from "../../context/comparisonContext";
 import useFetchNetlify from "../../hooks/useFetchNetlify";
-import RadarChart from "../radarChart/RadarChart";
-import PlayerPanel from "../playerPanel/PlayerPanel";
-import Spinner from "../spinner/Spinner";
+import RadarChart from "../../components/radarChart/RadarChart";
+import PlayerPanel from "../../components/playerPanel/PlayerPanel";
+import Spinner from "../../components/spinner/Spinner";
 
 function ComparisonPage() {
   const { setPlayers } = useContext(comparisonContext);

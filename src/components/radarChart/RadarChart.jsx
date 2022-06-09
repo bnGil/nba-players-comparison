@@ -22,20 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const labels = [
-  "PPG",
-  "BPG",
-  "APG",
-  "RPG",
-  "3P%",
-  "FG%",
-  // "Points Per Game",
-  // "Blocks Per Game",
-  // "Assists Per Game",
-  // "Rebounds Per Game",
-  // "Three Point %",
-  // "Field Goal %",
-];
+const labels = ["PPG", "BPG", "APG", "RPG", "3P%", "FG%"];
 
 const shortenFullName = (fullName) => {
   const arrOfStr = fullName.split(" ");
@@ -117,20 +104,3 @@ function RadarChart() {
 }
 
 export default RadarChart;
-
-// const dataLeft = [
-//   playerLeft?.selectedSeason?.pointsPerGame,
-//   playerLeft?.selectedSeason?.blocksPerGame,
-//   playerLeft?.selectedSeason?.assistsPerGame,
-//   playerLeft?.selectedSeason?.reboundsPerGame,
-//   playerLeft?.selectedSeason?.percentageThree,
-//   playerLeft?.selectedSeason?.percentageFieldGoal,
-// ];
-// const dataRight = [
-//   playerRight?.selectedSeason?.pointsPerGame,
-//   playerRight?.selectedSeason?.blocksPerGame,
-//   playerRight?.selectedSeason?.assistsPerGame,
-//   playerRight?.selectedSeason?.reboundsPerGame,
-//   playerRight?.selectedSeason?.percentageThree,
-//   playerRight?.selectedSeason?.percentageFieldGoal,
-// ];

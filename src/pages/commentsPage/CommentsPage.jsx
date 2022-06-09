@@ -3,10 +3,10 @@ import { setDoc, updateDoc, doc, getDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 
 import "./commentsPage.css";
-import Comment from "../comment/Comment";
-import CommentForm from "../commentForm/CommentForm";
+import Comment from "../../components/comment/Comment";
+import CommentForm from "../../components/commentForm/CommentForm";
 import { db } from "../../services/firebase-config";
-import Spinner from "../spinner/Spinner";
+import Spinner from "../../components/spinner/Spinner";
 
 function CommentsPage(props) {
   const [playerComments, setPlayerComments] = useState([]);
