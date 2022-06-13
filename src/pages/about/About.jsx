@@ -8,8 +8,8 @@ function About() {
         <h1>About us</h1>
         <p>
           The purpose of this application is to allow you to compare NBA players
-          characteristics that are formally measureable (season's statistics)
-          and informally measureable (people's opinions).
+          characteristics that are formally measurable (season's statistics) and
+          informally measurable (people's opinions).
         </p>
         <br />
         <p>
