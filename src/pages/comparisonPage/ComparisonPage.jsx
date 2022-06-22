@@ -14,7 +14,12 @@ function ComparisonPage() {
   useEffect(() => {
     const existingPlayers = [];
     data.forEach((player) => {
-      if (player.firstName && player.lastName && player.team) {
+      if (
+        player.firstName &&
+        player.lastName &&
+        player.team &&
+        player.headShotUrl
+      ) {
         existingPlayers.push(player);
       }
     });
