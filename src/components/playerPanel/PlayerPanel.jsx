@@ -24,7 +24,7 @@ function PlayerPanel({ side }) {
         <div
           className="player-img"
           style={{
-            backgroundImage: `url(${player && player.img})`,
+            backgroundImage: `${player.img ? `url(${player.img})` : ""}`,
           }}
         >
           <i
