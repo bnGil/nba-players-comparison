@@ -32,19 +32,6 @@
   display: flex;
 }
 
-.popup-btn {
-  margin: 5px;
-  border-radius: 0%;
-  border: 1px solid black;
-  padding: 2px 10px;
-  width: 70px;
-  cursor: pointer;
-}
-
-.popup-btn:hover {
-  background-color: #ccc;
-}
-
 input,
 textarea {
   margin-bottom: 10px;

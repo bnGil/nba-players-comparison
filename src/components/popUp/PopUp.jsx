@@ -8,7 +8,7 @@ function PopUp({ text, children, yesCallback, noCallback }) {
         <h3>{text}</h3>
         {children}
         <div className="btns-container">
-          <button className="popup-btn" onClick={yesCallback}>
+          <button className="btn" onClick={yesCallback}>
             Confirm
           </button>
         </div>
