@@ -23,16 +23,17 @@ Use this website to build your fantasy league!
 ## Packages:
 
 - Chart.js for React
+- react-select
   <br>
   <br>
 
 ## Future Features:
 
-- Login - to allow building a personal fantasy league
+- Login - to allow building a personal fantasy league and store it
 - More comment features such as likes and etc
   <br>
   <br>
 
 ## Website Link
 
-[NBA Players Comparison](https://nba-player-comparison.netlify.app/)
+[NBA Players Comparison](https://nba-players-comparison.netlify.app/)
