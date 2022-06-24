@@ -12,15 +12,16 @@ function ComparisonPage() {
   const { data, error, loading } = useFetchNetlify("/players");
 
   useEffect(() => {
-    const existingPlayers = [];
-    data.forEach((player) => {
+    const existingPlayers = data.filter((player) => {
       if (
         player.firstName &&
         player.lastName &&
         player.team &&
         player.headShotUrl
       ) {
-        existingPlayers.push(player);
+        return true;
+      } else {
+        return false;
       }
     });
     setPlayers(existingPlayers);

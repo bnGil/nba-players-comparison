@@ -24,7 +24,7 @@ function PlayerPanel({ side }) {
         <div
           className="player-img"
           style={{
-            backgroundImage: `${player.img ? `url(${player.img})` : ""}`,
+            backgroundImage: player.img ? `url(${player.img})` : "",
           }}
         >
           <i
@@ -34,19 +34,17 @@ function PlayerPanel({ side }) {
           {player && player.selectedSeason && (
             <img
               className="team-img"
-              src={
-                player && player.selectedSeason && player.selectedSeason.teamImg
-              }
+              src={player.selectedSeason.teamImg}
               alt="team"
             />
           )}
         </div>
-        <h2 className="player-name">
-          {player && player.fullName && shortenFullName(player.fullName)}
-        </h2>
-        <h3 className="player-season">
-          {player && player.selectedSeason && player.selectedSeason.season}
-        </h3>
+        {player && player.fullName && (
+          <h2 className="player-name">{shortenFullName(player.fullName)}</h2>
+        )}
+        {player && player.selectedSeason && (
+          <h3 className="player-season">{player.selectedSeason.season}</h3>
+        )}
         {Object.keys(player).length > 0 && (
           <Link
             className="comments-link"

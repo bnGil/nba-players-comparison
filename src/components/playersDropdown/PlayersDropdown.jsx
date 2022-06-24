@@ -12,13 +12,11 @@ function PlayersDropdown({ side }) {
     Object.keys(player).length > 0 ? player : null
   );
 
-  const fullNames = players.map((player) => {
-    return {
-      fullName: `${player.firstName} ${player.lastName}`,
-      id: player.id,
-      img: player.headShotUrl,
-    };
-  });
+  const fullNames = players.map((player) => ({
+    fullName: `${player.firstName} ${player.lastName}`,
+    id: player.id,
+    img: player.headShotUrl,
+  }));
 
   useEffect(() => {
     if (selectedPlayer) {
