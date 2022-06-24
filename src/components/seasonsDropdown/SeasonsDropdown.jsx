@@ -1,18 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import Select from "react-select";
 
 import { comparisonContext } from "../../context/comparisonContext";
-import Dropdown from "../dropdown/Dropdown";
 import TEAMS_IMGS from "../../constants/teamsConvertion";
+import "../playersDropdown/dropdown.css";
 
 function SeasonsDropdown({ side }) {
   const { players, playerRight, setPlayerRight, playerLeft, setPlayerLeft } =
     useContext(comparisonContext);
   const player = side === "right" ? playerRight : playerLeft;
   const setPlayer = side === "right" ? setPlayerRight : setPlayerLeft;
-
-  const [selectedSeason, setSelectedSeason] = useState(null);
-  const [seasons, setSeasons] = useState([]);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -41,6 +39,8 @@ function SeasonsDropdown({ side }) {
           turnoversPerGame: season.turnoversPerGame,
           percentageThree: season.percentageThree,
           percentageFieldGoal: season.percentageFieldGoal,
+          label: season.season,
+          value: season.id,
         };
         seasons.push(seasonObj);
       }
@@ -59,13 +59,14 @@ function SeasonsDropdown({ side }) {
       turnoversPerGame: tempPlayer.careerTurnovers,
       percentageThree: tempPlayer.careerPercentageThree,
       percentageFieldGoal: tempPlayer.careerPercentageFieldGoal,
+      label: "Career Avg",
     };
     seasons.push(careerAvgSeason);
     return seasons;
   };
 
   useEffect(() => {
-    if (player && player.id) {
+    if (Object.keys(player).length > 0 && !player.seasons) {
       setLoading(true);
       const url = `/.netlify/functions/fetchData?endpoint=/playerseasons?playerId=${player.id}`;
       const fetchDataFromNetlify = async () => {
@@ -73,7 +74,7 @@ function SeasonsDropdown({ side }) {
           setLoading(true);
           const { data } = await axios.get(url);
           const seasons = getPlayerSeasonsArr(data);
-          setSeasons(seasons);
+          setPlayer({ ...player, seasons });
         } catch (err) {
           setError(err.message);
         } finally {
@@ -85,24 +86,24 @@ function SeasonsDropdown({ side }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [player]);
 
-  useEffect(() => {
-    if (selectedSeason) {
-      setPlayer({ ...player, selectedSeason });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedSeason]);
+  const onChangeOption = (selectedSeason) => {
+    setPlayer({ ...player, selectedSeason });
+  };
 
   if (error) {
     return <p>{error}</p>;
   }
+
+  const value = player?.selectedSeason ? player.selectedSeason : null;
+
   return (
-    <Dropdown
-      options={seasons}
-      prompt={loading ? "Loading..." : "Select season..."}
-      id="id"
-      label="season"
-      onChange={(season) => setSelectedSeason(season)}
-      value={selectedSeason}
+    <Select
+      options={player.seasons}
+      placeholder={loading ? "Loading..." : "Select season..."}
+      isDisabled={loading}
+      onChange={onChangeOption}
+      value={value}
+      className="dropdown"
     />
   );
 }

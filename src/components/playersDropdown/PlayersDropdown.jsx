@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
+import Select from "react-select";
 
-import Dropdown from "../dropdown/Dropdown";
 import { comparisonContext } from "../../context/comparisonContext";
 
 function PlayersDropdown({ side }) {
@@ -8,30 +8,27 @@ function PlayersDropdown({ side }) {
     useContext(comparisonContext);
   const player = side === "right" ? playerRight : playerLeft;
   const setPlayer = side === "right" ? setPlayerRight : setPlayerLeft;
-  const [selectedPlayer, setSelectedPlayer] = useState(
-    Object.keys(player).length > 0 ? player : null
-  );
 
-  const fullNames = players.map((player) => ({
-    fullName: `${player.firstName} ${player.lastName}`,
+  const onChangeOption = (selectedPlayer) => {
+    setPlayer(selectedPlayer);
+  };
+
+  const playersOptions = players.map((player) => ({
+    label: `${player.firstName} ${player.lastName}`,
+    value: player.id,
     id: player.id,
     img: player.headShotUrl,
+    fullName: `${player.firstName} ${player.lastName}`,
   }));
 
-  useEffect(() => {
-    if (selectedPlayer) {
-      setPlayer(selectedPlayer);
-    }
-  }, [selectedPlayer, setPlayer]);
+  const value = Object.keys(player).length > 0 ? player : null;
 
   return (
-    <Dropdown
-      options={fullNames}
-      prompt="Select player..."
-      id="id"
-      label="fullName"
-      onChange={(player) => setSelectedPlayer(player)}
-      value={selectedPlayer}
+    <Select
+      options={playersOptions}
+      onChange={onChangeOption}
+      placeholder="Select player..."
+      value={value}
     />
   );
 }

@@ -53,41 +53,37 @@ function RadarChart() {
       labels,
       datasets: [
         {
-          label:
-            Object.keys(playerLeft).length > 0
-              ? shortenFullName(playerLeft.fullName)
-              : "",
-          data:
-            Object.keys(playerLeft).length > 3
-              ? [
-                  playerLeft.selectedSeason.pointsPerGame,
-                  playerLeft.selectedSeason.blocksPerGame,
-                  playerLeft.selectedSeason.assistsPerGame,
-                  playerLeft.selectedSeason.reboundsPerGame,
-                  playerLeft.selectedSeason.percentageThree,
-                  playerLeft.selectedSeason.percentageFieldGoal,
-                ]
-              : [],
+          label: playerLeft?.fullName
+            ? shortenFullName(playerLeft.fullName)
+            : "",
+          data: playerLeft?.selectedSeason
+            ? [
+                playerLeft.selectedSeason.pointsPerGame,
+                playerLeft.selectedSeason.blocksPerGame,
+                playerLeft.selectedSeason.assistsPerGame,
+                playerLeft.selectedSeason.reboundsPerGame,
+                playerLeft.selectedSeason.percentageThree,
+                playerLeft.selectedSeason.percentageFieldGoal,
+              ]
+            : [],
           backgroundColor: "rgba(255, 99, 132, 0.2)",
           borderColor: "rgba(255, 99, 132, 1)",
           borderWidth: 1,
         },
         {
-          label:
-            Object.keys(playerRight).length > 0
-              ? shortenFullName(playerRight.fullName)
-              : "",
-          data:
-            Object.keys(playerRight).length > 3
-              ? [
-                  playerRight.selectedSeason.pointsPerGame,
-                  playerRight.selectedSeason.blocksPerGame,
-                  playerRight.selectedSeason.assistsPerGame,
-                  playerRight.selectedSeason.reboundsPerGame,
-                  playerRight.selectedSeason.percentageThree,
-                  playerRight.selectedSeason.percentageFieldGoal,
-                ]
-              : [],
+          label: playerRight?.fullName
+            ? shortenFullName(playerRight.fullName)
+            : "",
+          data: playerRight?.selectedSeason
+            ? [
+                playerRight.selectedSeason.pointsPerGame,
+                playerRight.selectedSeason.blocksPerGame,
+                playerRight.selectedSeason.assistsPerGame,
+                playerRight.selectedSeason.reboundsPerGame,
+                playerRight.selectedSeason.percentageThree,
+                playerRight.selectedSeason.percentageFieldGoal,
+              ]
+            : [],
           backgroundColor: "rgba(54, 162, 235, 0.2)",
           borderColor: "rgb(54, 162, 235)",
           borderWidth: 1,
