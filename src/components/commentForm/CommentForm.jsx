@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./commentForm.css";
 
-function CommentForm({ onHandleClick }) {
+function CommentForm({ onSubmit }) {
   const [author, setAuthor] = useState("");
   const [text, setText] = useState("");
 
@@ -28,7 +28,7 @@ function CommentForm({ onHandleClick }) {
         value="Submit"
         onClick={(e) => {
           e.preventDefault();
-          onHandleClick(author, text);
+          onSubmit(author, text);
           setAuthor("");
           setText("");
         }}

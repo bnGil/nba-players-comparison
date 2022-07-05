@@ -81,7 +81,7 @@ function CommentsPage(props) {
         paintComments()
       )}
       <p>Leave your comment below and please be nice</p>
-      <CommentForm onHandleClick={createComment} />
+      <CommentForm onSubmit={createComment} />
       <button className="btn" onClick={props.history.goBack}>
         Back
       </button>
